@@ -8,7 +8,7 @@
 import SwiftUI
 import WorkoutKit
 
-struct WorkoutContent: View {
+struct WorkoutContentView: View {
     
     private var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
     
@@ -34,5 +34,5 @@ struct WorkoutContent: View {
 }
 
 #Preview {
-    WorkoutContent()
+    WorkoutContentView()
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct testingWatch_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            HealthContentView()
+            WorkoutContentView()
         }
     }
 }
