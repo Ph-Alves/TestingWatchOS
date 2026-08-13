@@ -6,10 +6,30 @@
 //
 
 import SwiftUI
+import WorkoutKit
 
 struct WorkoutContent: View {
+    
+    private var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            Task {
+                do {
+                    try await workoutViewModel.plan?.openInWorkoutApp()
+                } catch {
+                    print("Deu erro: \(error.localizedDescription)")
+                }
+            }
+        } label: {
+            Text("Visualizar treino")
+        }
+        
+        Button {
+            workoutViewModel.createWorkout()
+        } label: {
+            Text("Criar treino")
+        }
     }
 }
 

@@ -8,8 +8,15 @@
 import Foundation
 import SwiftUI
 import WorkoutKit
+import HealthKit
 
 @Observable
 final class WorkoutViewModel {
     
+    var plan: WorkoutPlan?
+    
+    func createWorkout() {
+        let workout = SingleGoalWorkout(activity: .boxing)
+        plan = WorkoutPlan(.goal(workout))
+    }
 }
