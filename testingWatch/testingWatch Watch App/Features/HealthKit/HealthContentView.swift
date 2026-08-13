@@ -24,7 +24,7 @@ struct HealthContentView: View {
                 Text("\(biologicalSex.displayName)")
                 Text("\(wheelChairUse.displayName)")
             } else {
-                Text("Sem dados!")
+                Text("Sem dados! (Reabra o app)")
             }
         }
         .padding()
