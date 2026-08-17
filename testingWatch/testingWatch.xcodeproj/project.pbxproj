@@ -460,6 +460,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = testingWatch;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Precisamos ler os dados de saúde do seu watch para te fornecer os melhores insights!";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Precisamos atualizar seus dados de saúde com base no treino.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -495,6 +496,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = testingWatch;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Precisamos ler os dados de saúde do seu watch para te fornecer os melhores insights!";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Precisamos atualizar seus dados de saúde com base no treino.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
