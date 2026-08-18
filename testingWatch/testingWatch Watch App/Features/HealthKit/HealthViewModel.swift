@@ -9,19 +9,26 @@ import Foundation
 import SwiftUI
 import HealthKit
 
+// MARK: - Enum de erros personalizados
+// Isso foi mais um teste para poder lançar erros personalizados
 enum error: Error {
     case cannotGetDateOfBirth
 }
 
+// MARK: - View Model de saúde
+// Observable para manter a view atualizada com modificações da VM
 @Observable
 final class HealthViewModel {
     
-    private var healthStore: HKHealthStore
+    // MARK: - Variables
     
-    init() {
-        self.healthStore = HKHealthStore()
-    }
+    // HealthStore instanciado (para operações do HK)
+    private var healthStore: HKHealthStore = HKHealthStore()
     
+    // MARK: - Functions
+    
+    // Carrega os dados e pede autorização
+    // nesse caso pede os dados apenas para leitura.
     func loadHealthData() async throws {
         let typesToRead: Set<HKObjectType> = [
             HKCharacteristicType(.bloodType),
@@ -30,15 +37,15 @@ final class HealthViewModel {
             HKCharacteristicType(.wheelchairUse)
         ]
         
-        print("Pedindo autorização...") // adicione isso
         try await healthStore.requestAuthorization(toShare: [], read: typesToRead)
-        print("Autorização concluída") // e isso
     }
     
+    // Pega o tipo sanguíneo do usuário
     func getBloodType() throws -> HKBloodType {
         return try healthStore.bloodType().bloodType
     }
     
+    // Pega a data de nascimento do usuário
     func getDateOfBirth() throws -> Date {
         let date = try healthStore.dateOfBirthComponents()
         let calendar = Calendar.current
@@ -49,10 +56,12 @@ final class HealthViewModel {
         }
     }
     
+    // Pega o sexo biológico do usuário
     func getBiologicalSex() throws -> HKBiologicalSex {
         return try healthStore.biologicalSex().biologicalSex
     }
     
+    // Pega se o usuário usa ou não cadeira de rodas
     func getWeelchairUse() throws -> HKWheelchairUse {
         return try healthStore.wheelchairUse().wheelchairUse
     }

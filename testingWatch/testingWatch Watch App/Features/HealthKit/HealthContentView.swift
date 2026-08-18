@@ -8,15 +8,23 @@
 import SwiftUI
 import HealthKit
 
+// MARK: - View
 struct HealthContentView: View {
     
+    // MARK: - Variables
+    
+    // ViewModel
     let healthViewModel: HealthViewModel = HealthViewModel()
+    
+    // Dados para visualização (pode passar para VM se quiser)
     @State private var bloodType: HKBloodType?
     @State private var dateOfBirth: Date?
     @State private var biologicalSex: HKBiologicalSex?
     @State private var wheelChairUse: HKWheelchairUse?
     
+    // MARK: - Body View
     var body: some View {
+        // Se dados existem mostra todos, se não reabra o app.
         VStack {
             if let bloodType, let dateOfBirth, let biologicalSex, let wheelChairUse {
                 Text("\(bloodType.displayName)")
@@ -29,6 +37,7 @@ struct HealthContentView: View {
         }
         .padding()
         .task {
+            // Faz todos os gets da viewModel (o load pede permissão)
             do {
                 try await healthViewModel.loadHealthData()
                 bloodType = try healthViewModel.getBloodType()
@@ -41,6 +50,9 @@ struct HealthContentView: View {
         }
     }
 }
+
+// MARK: - Extensions
+// Todos as extensions servem para mostrar um valor formatado baseando-se no caso do enum, fiz com IA para acelerar o processo, mas garanto que ta revisado.
 
 extension HKBloodType {
     var displayName: String {
@@ -82,6 +94,7 @@ extension HKWheelchairUse {
     }
 }
 
+// MARK: - Preview
 #Preview {
     HealthContentView()
 }

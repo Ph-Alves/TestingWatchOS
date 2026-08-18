@@ -8,11 +8,19 @@
 import SwiftUI
 import WorkoutKit
 
+// MARK: - View de Workout
 struct WorkoutContentView: View {
     
+    // MARK: - Variables
     private var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
     
+    // MARK: - Body View
     var body: some View {
+        // A view possui 4 buttons, cada um responsável:
+        // - Executa no workout o plano feito
+        // - Criar um plano de workout
+        // - Executar um workout e Pedir autorização de uso
+        // - Finalizar um workout
         VStack {
             Button {
                 Task {
@@ -54,6 +62,7 @@ struct WorkoutContentView: View {
             } label: {
                 Text("Finalizar treino")
             }
+        // Solicita permissão assim que a view é renderizada a primeira vez.
         }.task {
             do {
                 try await workoutViewModel.requestAuthorization()
@@ -64,6 +73,7 @@ struct WorkoutContentView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     WorkoutContentView()
 }
